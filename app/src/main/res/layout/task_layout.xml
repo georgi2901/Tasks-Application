@@ -19,7 +19,7 @@
             android:layout_height="wrap_content"
             tool:text="Sample task"
             android:paddingStart="9dp"
-            android:buttonTint="@android:color/holo_blue_dark"/>
+            android:buttonTint="@android:color/holo_orange_dark"/>
     </RelativeLayout>
 
 
