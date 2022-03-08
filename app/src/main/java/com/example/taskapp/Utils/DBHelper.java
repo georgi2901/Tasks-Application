@@ -19,12 +19,12 @@ public class DBHelper extends SQLiteOpenHelper {
     private static final String ID = "id";
     private static final String TASK = "task";
     private static final String STATUS = "status";
-    private static final String DATE = "date";
-    private static final String CREATE_TASK_TABLE = "CREATE TABLE " + TASK_TABLE + "(" + ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + TASK + " TEXT, " + STATUS + " INTEGER, " + DATE + " TEXT)";
+    //private static final String DATE = "date";
+    private static final String CREATE_TASK_TABLE = "CREATE TABLE " + TASK_TABLE + "(" + ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + TASK + " TEXT, " + STATUS + " INTEGER)";
 
     private SQLiteDatabase db;
 
-    private DBHelper(Context context){
+    public DBHelper(Context context){
         super(context, NAME, null, VERSION);
     }
 
