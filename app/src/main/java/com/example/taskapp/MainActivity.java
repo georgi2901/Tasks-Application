@@ -1,12 +1,15 @@
 package com.example.taskapp;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 
 import com.example.taskapp.Adapter.ToDoAdapter;
 import com.example.taskapp.Model.ToDoModel;
@@ -22,6 +25,7 @@ public class MainActivity extends AppCompatActivity implements DialogCloseListen
     private RecyclerView tasksRV;
     private ToDoAdapter tasksAdapter;
     private FloatingActionButton fab;
+    private CheckBox cb;
 
     private List<ToDoModel> taskList;
     private DBHelper db;
@@ -44,6 +48,11 @@ public class MainActivity extends AppCompatActivity implements DialogCloseListen
 
         fab = findViewById(R.id.actionButton);
 
+
+
+        ItemTouchHelper itemTouchHelper = new ItemTouchHelper(new RecyclerHelper(tasksAdapter));
+        itemTouchHelper.attachToRecyclerView(tasksRV);
+
         taskList = db.getAllTasks();
         Collections.reverse(taskList);
         tasksAdapter.setTask(taskList);
@@ -54,6 +63,7 @@ public class MainActivity extends AppCompatActivity implements DialogCloseListen
                 AddTask.newInstance().show(getSupportFragmentManager(), AddTask.TAG);
             }
         });
+
     }
     @Override
     public void handleDialogClose(DialogInterface dialog){

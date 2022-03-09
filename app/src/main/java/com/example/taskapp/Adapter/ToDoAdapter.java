@@ -1,5 +1,6 @@
 package com.example.taskapp.Adapter;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -60,13 +61,22 @@ public class ToDoAdapter extends RecyclerView.Adapter<ToDoAdapter.ViewHolder> {
     }
 
     //public void setTasks(List<ToDoModel> toDoList){
-      //  this.toDoList = toDoList;
+    //  this.toDoList = toDoList;
      //   notifyDataSetChanged();
    // }
 
     public void setTask(List<ToDoModel> toDoList){
         this.toDoList = toDoList;
     }
+
+
+    public void deleteItem(int position){
+        ToDoModel item = toDoList.get(position);
+        db.deleteTask(item.getId());
+        toDoList.remove(position);
+        notifyItemRemoved(position);
+    }
+
     public void editItem(int position){
         ToDoModel item = toDoList.get(position);
         Bundle bundle = new Bundle();
@@ -75,6 +85,15 @@ public class ToDoAdapter extends RecyclerView.Adapter<ToDoAdapter.ViewHolder> {
         AddTask fragment = new AddTask();
         fragment.setArguments(bundle);
         fragment.show(activity.getSupportFragmentManager(), AddTask.TAG);
+    }
+
+    public void removeItem(int position){
+        toDoList.get(position);
+        toDoList.remove(position);
+    }
+
+    public Context getContext() {
+        return activity;
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder{
