@@ -62,8 +62,8 @@ public class ToDoAdapter extends RecyclerView.Adapter<ToDoAdapter.ViewHolder> {
 
     //public void setTasks(List<ToDoModel> toDoList){
     //  this.toDoList = toDoList;
-     //   notifyDataSetChanged();
-   // }
+    //   notifyDataSetChanged();
+    // }
 
     public void setTask(List<ToDoModel> toDoList){
         this.toDoList = toDoList;
